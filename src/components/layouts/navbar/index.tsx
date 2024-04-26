@@ -1,11 +1,4 @@
-import {
-  Image,
-  Link,
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-} from "@nextui-org/react";
+import { Link, Navbar, NavbarContent, NavbarItem } from "@nextui-org/react";
 import { useWindowScroll } from "@uidotdev/usehooks";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
@@ -21,7 +14,7 @@ export default function NavbarLayout() {
 
   return (
     <Navbar maxWidth="md" isBordered={isScrolled} isBlurred>
-      <NavbarBrand>
+      {/* <NavbarBrand>
         <Image
           src="/images/avatar.jpeg"
           alt="Picture of the author"
@@ -29,7 +22,7 @@ export default function NavbarLayout() {
           height={32}
           radius="sm"
         />
-      </NavbarBrand>
+      </NavbarBrand> */}
       <NavbarContent className="hidden sm:flex gap-1" justify="center">
         {navbarItems.map((item, index) => (
           <NavbarItem

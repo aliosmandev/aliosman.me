@@ -15,7 +15,7 @@ export interface INavbarItem {
 
 export const navbarItems: INavbarItem[] = [
   {
-    title: "About",
+    title: "Home",
     path: "/",
     icon: <HomeIcon size={18} />,
   },
@@ -28,6 +28,11 @@ export const navbarItems: INavbarItem[] = [
     title: "Blogs",
     path: "/blogs",
     icon: <BookOpenText size={18} />,
+  },
+  {
+    title: "Work",
+    path: "/work",
+    icon: <Library size={18} />,
   },
 ];
 

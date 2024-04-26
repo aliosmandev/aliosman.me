@@ -9,7 +9,7 @@ export default function Providers({ children }: PropsWithChildren) {
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
-        <main className="text-foreground bg-background h-screen font-light flex items-center flex-col gap-y-10">
+        <main className="text-foreground bg-background h-screen font-light flex items-center flex-col gap-y-20">
           <NavbarLayout />
           <div className="w-full max-w-3xl px-6">{children}</div>
         </main>
