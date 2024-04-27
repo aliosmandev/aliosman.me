@@ -24,7 +24,7 @@ const TwitterCard = () => {
       <div className="p-2 bg-blue-400 w-fit rounded-lg">
         <TwitterIcon color="white" size={24} />
       </div>
-      <div className="flex flex-col my-2 text-md gap-y-0.5">
+      <div className="flex flex-col my-2 mt-1 text-md gap-y-0.5">
         <h1 className="text-black leading-4">Twitter</h1>
         <p className="text-gray-500 text-sm leading-*">@aliosmandev</p>
       </div>
@@ -55,7 +55,7 @@ export const GithubCard = () => {
           <div className="p-2 bg-gray-800 w-fit rounded-lg">
             <GithubIcon color="white" size={24} />
           </div>
-          <div className="flex flex-col my-2 text-md gap-y-0.5">
+          <div className="flex flex-col my-2 mt-3 text-md gap-y-0.5">
             <h1 className="text-black leading-4">Github</h1>
             <p className="text-gray-500 text-sm leading-*">Ali Osman</p>
           </div>
