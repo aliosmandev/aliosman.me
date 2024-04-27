@@ -17,6 +17,9 @@ dependencies:
   '@nextui-org/theme':
     specifier: ^2.1.18
     version: 2.1.18(tailwindcss@3.4.3)
+  '@postiva/client':
+    specifier: ^0.0.26
+    version: 0.0.26
   '@uidotdev/usehooks':
     specifier: ^2.4.1
     version: 2.4.1(react-dom@18.2.0)(react@18.2.0)
@@ -1648,6 +1651,10 @@ packages:
     engines: {node: '>=14'}
     requiresBuild: true
     optional: true
+
+  /@postiva/client@0.0.26:
+    resolution: {integrity: sha512-dPSeQjARLPr7eI+EBXwSTgWmzrVpdHq1AYu4qgsCANeL9Xf3mZfKCIQBNzPTXSUka2YUoqr9bm1jyajlzUp6Kg==}
+    dev: false
 
   /@react-aria/breadcrumbs@3.5.11(react@18.2.0):
     resolution: {integrity: sha512-bQz4g2tKvcWxeqPGj9O0RQf++Ka8f2o/pJMJB+QQ27DVQWhxpQpND//oFku2aFYkxHB/fyD9qVoiqpQR25bidw==}

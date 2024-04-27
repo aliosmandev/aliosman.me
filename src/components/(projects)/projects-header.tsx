@@ -11,7 +11,7 @@ export default function ProjectsHeader() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 2 * 0.1 }}
         >
-          Featured Projects
+          Projects
         </motion.h1>
         <motion.p
           initial={{ y: 20, opacity: 0 }}
