@@ -1,10 +1,16 @@
 "use client";
 import { Button } from "@nextui-org/button";
+import { Tooltip } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { GithubIcon, TwitterIcon } from "lucide-react";
+import Link from "next/link";
 import { useMemo } from "react";
 
-export default function SocialLinks() {
+export interface SocialLinksProps {
+  githubActivities: Externals.Github.ApiResponse;
+}
+
+export default function SocialLinks({ githubActivities }: SocialLinksProps) {
   return (
     <motion.div
       className="flex gap-x-8"
@@ -13,14 +19,17 @@ export default function SocialLinks() {
       transition={{ duration: 0.5, delay: 4 * 0.1 }}
     >
       <TwitterCard />
-      <GithubCard />
+      <GithubCard githubActivities={githubActivities} />
     </motion.div>
   );
 }
 
 const TwitterCard = () => {
   return (
-    <div className="flex flex-col gap-y-2 bg-blue-50 border w-48 p-4 border-gray-200 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors">
+    <Link
+      href="https://twitter.com/aliosmandev"
+      className="flex flex-col gap-y-2 bg-blue-50 border w-48 p-4 border-gray-200 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors"
+    >
       <div className="p-2 bg-blue-400 w-fit rounded-lg">
         <TwitterIcon color="white" size={24} />
       </div>
@@ -38,20 +47,30 @@ const TwitterCard = () => {
           Follow
         </Button>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export const GithubCard = () => {
-  const githubActivities = useMemo(
-    () => Array.from({ length: 56 }, () => Math.floor(Math.random() * 3)),
-    []
-  );
+export const GithubCard = ({ githubActivities }: SocialLinksProps) => {
+  const activities = useMemo(() => {
+    const flatActivities =
+      githubActivities.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(
+        (week) => week.contributionDays
+      );
+    return flatActivities.slice(
+      flatActivities.length - 56,
+      flatActivities.length
+    );
+  }, [githubActivities]);
 
   return (
-    <div className="flex flex-col gap-y-2 border w-96 p-4 border-gray-200 rounded-2xl cursor-pointer hover:bg-gray-100 transition-colors">
+    <div className="flex flex-col gap-y-2 border w-96 p-4 border-gray-200 rounded-2xl hover:bg-gray-100 transition-colors">
       <div className="flex justify-between h-full">
-        <div className="flex flex-col">
+        <Link
+          href="https://github.com/osmandlsmn"
+          target="_blank"
+          className="flex flex-col cursor-pointer"
+        >
           <div className="p-2 bg-gray-800 w-fit rounded-lg">
             <GithubIcon color="white" size={24} />
           </div>
@@ -67,20 +86,39 @@ export const GithubCard = () => {
           >
             Follow
           </Button>
-        </div>
-        <div className="flex flex-wrap gap-2 w-40">
-          {githubActivities.map((level, index) => (
-            <div
-              key={index}
-              className={`w-3 h-3 rounded ${
-                level === 0
-                  ? "bg-green-200"
-                  : level === 1
-                  ? "bg-green-300"
-                  : "bg-green-400"
-              }`}
-            />
-          ))}
+        </Link>
+        <div className="flex flex-wrap gap-2 w-40 select-none">
+          {activities.map(({ contributionCount, date }, index) => {
+            const formattedDate = new Date(date).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+            });
+            return (
+              <Tooltip
+                key={index}
+                radius="sm"
+                className="text-sm"
+                content={
+                  contributionCount
+                    ? `${contributionCount} contributions on ${formattedDate}`
+                    : `No contributions on ${formattedDate}`
+                }
+              >
+                <div
+                  key={index}
+                  className={`w-3 h-3 rounded ${
+                    contributionCount === 0
+                      ? "bg-gray-200"
+                      : contributionCount < 5
+                      ? "bg-green-400"
+                      : contributionCount < 10
+                      ? "bg-green-500"
+                      : "bg-green-600"
+                  }`}
+                />
+              </Tooltip>
+            );
+          })}
         </div>
       </div>
     </div>

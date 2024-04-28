@@ -1,11 +1,14 @@
 import HeroSection from "@/components/(home)/hero-section";
 import SocialLinks from "@/components/(home)/social-links";
+import { retrieveContributionData } from "@/libs/github";
 
-export default function Home() {
+export default async function Home() {
+  const githubActivities = await retrieveContributionData("osmandlsmn");
+
   return (
     <div className="flex flex-col gap-y-16">
       <HeroSection />
-      <SocialLinks />
+      <SocialLinks githubActivities={githubActivities} />
     </div>
   );
 }
