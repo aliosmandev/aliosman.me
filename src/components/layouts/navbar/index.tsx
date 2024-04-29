@@ -14,32 +14,29 @@ export default function NavbarLayout() {
 
   return (
     <Navbar maxWidth="md" isBordered={isScrolled} isBlurred>
-      {/* <NavbarBrand>
-        <Image
-          src="/images/avatar.jpeg"
-          alt="Picture of the author"
-          width={32}
-          height={32}
-          radius="sm"
-        />
-      </NavbarBrand> */}
       <NavbarContent className="hidden sm:flex gap-1" justify="center">
-        {navbarItems.map((item, index) => (
-          <NavbarItem
-            isActive={pathname === item.path}
-            key={index}
-            className="data-[active=true]:bg-gray-200 dark:data-[active=true]:bg-foreground-100 rounded-lg px-3 py-0.5 transition-colors group !font-light"
-          >
-            <Link
-              color="foreground"
-              href={item.path}
-              aria-current={pathname === item.path ? "page" : undefined}
-              className="!text-sm group-hover:text-black dark:group-hover:text-white"
+        {navbarItems.map((item, index) => {
+          const isActive =
+            pathname === item.path ||
+            (item.path !== "/" && pathname.includes(item.path));
+
+          return (
+            <NavbarItem
+              isActive={isActive}
+              key={index}
+              className="data-[active=true]:bg-gray-200 dark:data-[active=true]:bg-foreground-100 rounded-lg px-3 py-0.5 transition-colors group !font-light"
             >
-              {item.title}
-            </Link>
-          </NavbarItem>
-        ))}
+              <Link
+                color="foreground"
+                href={item.path}
+                aria-current={isActive ? "page" : undefined}
+                className="!text-sm group-hover:text-black dark:group-hover:text-white"
+              >
+                {item.title}
+              </Link>
+            </NavbarItem>
+          );
+        })}
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>

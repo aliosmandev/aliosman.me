@@ -43,7 +43,7 @@ export default function BlogsSection() {
         transition={{ duration: 0.5, delay: 4 * 0.1 }}
       >
         {posts?.map((post, index) => (
-          <BlogCard key={index} {...post} index={index} />
+          <BlogCard key={index} {...post} />
         ))}
       </motion.ol>
     </Fragment>
