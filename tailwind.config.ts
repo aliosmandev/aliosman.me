@@ -11,6 +11,6 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js",
   ],
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui(), require("@tailwindcss/typography")],
 };
 export default config;

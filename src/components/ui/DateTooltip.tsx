@@ -34,7 +34,9 @@ const DateTooltip: React.FC<IDateTooltip> = ({
   return (
     <Tooltip
       content={
-        <span className={cn("text-sm", className)}>
+        <span
+          className={cn("text-sm text-gray-800 dark:text-gray-200", className)}
+        >
           {formattedDate.tooltip}
         </span>
       }

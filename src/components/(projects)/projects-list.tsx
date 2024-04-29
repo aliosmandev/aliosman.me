@@ -33,7 +33,7 @@ const ProjectCard = ({
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: (((4 + index) as never) + 1) * 0.1 }}
-      className="flex gap-x-4 gap-y-2 w-full p-4 rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group"
+      className="flex gap-x-4 gap-y-2 w-full p-4 rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group ms-4 dark:bg-gray-800 dark:border-gray-700"
     >
       <Image
         src={image}
@@ -44,8 +44,12 @@ const ProjectCard = ({
       />
       <div className="flex flex-col gap-y-2">
         <div className="flex flex-col gap-y-2">
-          <h1 className="font-medium">{title}</h1>
-          <p className="text-gray-600 text-sm">{description}</p>
+          <h1 className="font-medium text-lg text-gray-900 dark:text-white">
+            {title}
+          </h1>
+          <p className="text-gray-600 text-sm dark:text-gray-400">
+            {description}
+          </p>
         </div>
         <div className="flex gap-x-2 mt-auto mb-2">
           <Button

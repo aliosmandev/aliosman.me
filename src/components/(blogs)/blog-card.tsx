@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const BlogCard = ({ slug, title, description, publishedAt }: Content) => {
   return (
-    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group ms-4">
+    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group ms-4 dark:bg-gray-800 dark:border-gray-700">
       <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
       <Link
         className="w-full h-full py-3 px-4 flex-col"

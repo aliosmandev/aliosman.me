@@ -7,8 +7,66 @@ import DateTooltip, { IDateMode } from "@/components/ui/DateTooltip";
 import { postivaClient } from "@/libs/postiva";
 import { Image } from "@nextui-org/react";
 import { LucideEye } from "lucide-react";
+import { Metadata } from "next";
 import { Fragment } from "react";
 import { CiTimer } from "react-icons/ci";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params;
+
+  const post = await postivaClient.contents.getContentBySlug(slug);
+  const postUrl = process.env.NEXT_PUBLIC_URL_API + "/blogs/" + post.slug;
+
+  const metadata: Metadata = {
+    metadataBase: new URL(postUrl),
+    title: post.title,
+    description: post.description,
+    authors: post.publishedBy?.user
+      ? [{ name: post.publishedBy.user.name }]
+      : [],
+    creator: post.publishedBy?.user ? post.publishedBy.user.name : "",
+    openGraph: {
+      title: post.title,
+      description: post.description || (post.seoDescription as string),
+      url: postUrl,
+      type: "article",
+      publishedTime: post.publishedAt as string,
+      modifiedTime: post.updatedAt as string,
+      tags: post.categories?.map((category) => category.name) || [],
+      siteName: "Postiva",
+      images: [
+        {
+          url: post.thumbnail as string,
+          width: 800,
+          height: 600,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@aliosmandev",
+      title: post.title || (post.seoTitle as string),
+      description: post.description || (post.seoDescription as string),
+      siteId: "@aliosmandev",
+      creator: post.publishedBy?.user?.name || "",
+      images: [
+        {
+          url: post.thumbnail as string,
+          width: 800,
+          height: 600,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+
+  return metadata;
+}
 
 export default async function BlogDetail({
   params,
@@ -18,7 +76,7 @@ export default async function BlogDetail({
   const post = await postivaClient.contents.getContentBySlug(params.slug);
 
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-4 items-center">
       <div className="max-w-[400px] md:max-w-[600px] ">
         <div className="flex justify-between items-center mb-6">
           <div className="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
@@ -38,16 +96,16 @@ export default async function BlogDetail({
                 <div>
                   <div className="hs-tooltip inline-block [--trigger:hover] [--placement:bottom]">
                     <div className="hs-tooltip-toggle sm:mb-1 block text-start cursor-pointer">
-                      <span className="font-semibold text-gray-800">
+                      <span className="font-medium text-gray-800 dark:text-gray-200">
                         {post?.publishedBy?.user?.name}
                       </span>
                     </div>
                   </div>
-                  <ul className="text-xs text-gray-500">
+                  <ul className="text-xs text-gray-500 dark:text-gray-400 flex gap-x-2">
                     <li className="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full">
                       <DateTooltip
                         date={new Date(post?.publishedAt as string)}
-                        mode={IDateMode.relative}
+                        mode={IDateMode.absolute}
                       />
                     </li>
                     {post.readingStatus && (
@@ -68,12 +126,12 @@ export default async function BlogDetail({
           <div className="space-y-3">
             <h2 className="text-2xl font-bold md:text-3xl">{post?.title}</h2>
             {post.thumbnail && (
-              <PostDetailThumbnail imageSrc={post.thumbnail} />
+              <PostDetailThumbnail imageSrc={post.thumbnail as string} />
             )}
           </div>
 
           <article
-            className="prose lg:prose-xl max-w-[600px]"
+            className="prose lg:prose-xl max-w-[600px] dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: post?.html }}
           />
 
@@ -82,7 +140,7 @@ export default async function BlogDetail({
               {post.categories.map((category) => (
                 <a
                   key={category.id}
-                  className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200"
+                  className="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
                   href="#"
                 >
                   {category.name}
@@ -93,17 +151,17 @@ export default async function BlogDetail({
         </div>
       </div>
       <div className="sticky bottom-6 inset-x-0 text-center">
-        <div className="inline-block bg-white shadow-md rounded-full py-3 px-4">
+        <div className="inline-block bg-white shadow-md rounded-full py-3 px-4 text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-200">
           <div className="flex items-center gap-x-1.5">
             <PostShare {...post} />
 
             {post?.analytics?.views && (
               <Fragment>
-                <div className="block h-3 border-e border-gray-300 mx-3"></div>
+                <div className="block h-3 border-e border-gray-300 mx-3 dark:border-gray-700"></div>
                 <div className="hs-tooltip inline-block">
                   <button
                     type="button"
-                    className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800"
+                    className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                   >
                     <LucideEye className="flex-shrink-0 size-4" />
                     {post.analytics.views} views
@@ -122,11 +180,11 @@ export default async function BlogDetail({
 
             {post.readingStatus && (
               <Fragment>
-                <div className="block h-3 border-e border-gray-300 mx-3"></div>
+                <div className="block h-3 border-e border-gray-300 mx-3 dark:border-gray-700"></div>
                 <div className="hs-tooltip inline-block">
                   <button
                     type="button"
-                    className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800"
+                    className="hs-tooltip-toggle flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
                   >
                     <CiTimer className="flex-shrink-0 size-4" />
                     {post.readingStatus.minutes} min read

@@ -31,7 +31,7 @@ export default function PostShare({ slug, title }: Content) {
   return (
     <Popover>
       <PopoverTrigger>
-        <button className="flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800">
+        <button className="flex items-center gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400">
           <GoShare className="flex-shrink-0 size-4" />
           Share
         </button>
@@ -76,7 +76,7 @@ export const TwitterShare = ({ title, slug }: Content) => {
     <TwitterShareButton
       url={url}
       title={title}
-      className="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50"
+      className="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
       resetButtonStyle={false}
     >
       <TwitterIcon className="flex-shrink-0 size-4" />
