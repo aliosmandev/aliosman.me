@@ -33,14 +33,14 @@ const ProjectCard = ({
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: (((4 + index) as never) + 1) * 0.1 }}
-      className="flex gap-x-4 gap-y-2 w-full p-4 rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group ms-4 dark:bg-gray-800 dark:border-gray-700"
+      className="flex gap-x-4 flex-col md:flex-row gap-y-2 w-full p-4 rounded-2xl cursor-pointer border border-gray-100 bg-gray-50 hover:bg-gray-100 transition-colors group dark:bg-gray-800 dark:border-gray-700"
     >
       <Image
         src={image}
         alt={title}
         width={250}
         height={250}
-        className="rounded-lg"
+        className="rounded-lg hidden md:block"
       />
       <div className="flex flex-col gap-y-2">
         <div className="flex flex-col gap-y-2">

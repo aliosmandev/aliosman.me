@@ -6,6 +6,7 @@ import { Content } from "@postiva/client";
 import { CopyIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import { GoShare } from "react-icons/go";
 import { LinkedinShareButton, TwitterShareButton } from "react-share";
+import { toast } from "sonner";
 
 export default function PostShare({ slug, title }: Content) {
   const host =
@@ -21,11 +22,11 @@ export default function PostShare({ slug, title }: Content) {
         }, 200);
       });
 
-    // toast.promise(copyPromise, {
-    //   loading: "Loading...",
-    //   success: "Link copied.",
-    //   error: "Error",
-    // });
+    toast.promise(copyPromise, {
+      loading: "Loading...",
+      success: "Link copied.",
+      error: "Error",
+    });
   };
 
   return (
@@ -44,7 +45,7 @@ export default function PostShare({ slug, title }: Content) {
           <CopyIcon className="flex-shrink-0 size-4" />
           Copy link
         </button>
-        <div className="border-t border-gray-200 my-2"></div>
+        <div className="border-t-[0.50px] border-gray-200 w-full my-2 dark:border-gray-700"></div>
         <TwitterShareButton
           url={url}
           title={title}

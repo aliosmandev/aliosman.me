@@ -38,7 +38,7 @@ export default function BlogsSection() {
         </motion.p>
       </div>
       <motion.ol
-        className="relative border-s border-gray-200 dark:border-gray-700"
+        className="relative border-s border-gray-200 dark:border-gray-700 gap-y-6 flex flex-col"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 4 * 0.1 }}

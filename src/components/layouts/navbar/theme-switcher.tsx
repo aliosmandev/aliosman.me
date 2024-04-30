@@ -54,7 +54,7 @@ export function ThemeSwitcher() {
       >
         {themes.map((theme) => (
           <DropdownItem
-            className="dark:text-white"
+            className="text-black dark:text-white"
             key={theme}
             onClick={() => changeTheme(theme)}
           >

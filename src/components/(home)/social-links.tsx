@@ -13,7 +13,7 @@ export interface SocialLinksProps {
 export default function SocialLinks({ githubActivities }: SocialLinksProps) {
   return (
     <motion.div
-      className="flex gap-x-8"
+      className="flex gap-8 flex-col lg:flex-row"
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 4 * 0.1 }}
@@ -28,7 +28,7 @@ const TwitterCard = () => {
   return (
     <Link
       href="https://twitter.com/aliosmandev"
-      className="flex flex-col gap-y-2 bg-blue-50 border w-48 p-4 border-gray-200 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors group dark:bg-gray-800 dark:border-gray-700"
+      className="flex flex-col gap-y-2 bg-blue-50 border w-full md:w-48 p-4 border-gray-200 rounded-2xl cursor-pointer hover:bg-blue-100 transition-colors group dark:bg-gray-800 dark:border-gray-700"
     >
       <div className="p-2 bg-blue-400 w-fit rounded-lg">
         <TwitterIcon color="white" size={24} />
@@ -66,8 +66,8 @@ export const GithubCard = ({ githubActivities }: SocialLinksProps) => {
   }, [githubActivities]);
 
   return (
-    <div className="flex flex-col gap-y-2 border w-96 p-4 border-gray-200 rounded-2xl hover:bg-gray-100 transition-colors dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex justify-between h-full">
+    <div className="flex flex-col gap-y-2 border w-full md:w-96 p-4 border-gray-200 rounded-2xl hover:bg-gray-100 transition-colors dark:bg-gray-800 dark:border-gray-700">
+      <div className="flex justify-between h-full flex-col md:flex-row gap-y-4">
         <Link
           href="https://github.com/osmandlsmn"
           target="_blank"
@@ -91,7 +91,7 @@ export const GithubCard = ({ githubActivities }: SocialLinksProps) => {
             Follow
           </Button>
         </Link>
-        <div className="flex flex-wrap gap-2 w-40 select-none">
+        <div className="flex flex-wrap gap-2 w-full md:w-40 select-none">
           {activities.map(({ contributionCount, date }, index) => {
             const formattedDate = new Date(date).toLocaleDateString("en-US", {
               month: "long",
@@ -112,7 +112,7 @@ export const GithubCard = ({ githubActivities }: SocialLinksProps) => {
               >
                 <div
                   key={index}
-                  className={`w-3 h-3 rounded ${
+                  className={`w-[9.50px] h-[9.50px] md:w-3 md:h-3 rounded ${
                     contributionCount === 0
                       ? "bg-gray-200"
                       : contributionCount < 5
