@@ -5,29 +5,63 @@ import Link from "next/link";
 
 const BlogCard = ({ slug, title, description, publishedAt }: Content) => {
   return (
-    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer  transition-colors group ms-4">
-      <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-[6.50px] border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-      <Link
-        className="w-full h-full flex-col z-40 relative"
-        href={`/blogs/${slug}`}
-      >
-        <div className="absolute bg-gradient-to-b from-[#f9f9f9] to-[#f9f9f9] dark:from-[#1a202c] dark:to-[#1a202c] w-full p-4 h-full rounded-2xl -z-10 group-hover:block hidden scale-50 group-hover:scale-100 transition-all duration-200"></div>
-        <div className="px-4 w-full h-full flex-col">
-          <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 z-50">
-            {new Date(publishedAt as string).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </time>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer  transition-colors group ms-[24px]">
+      <article className="relative group">
+        <div className="absolute -inset-y-4 -inset-x-6 sm:rounded-2xl group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50" />
+        <svg
+          viewBox="0 0 9 9"
+          className="hidden absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"
+        >
+          <circle
+            cx="4.5"
+            cy="4.5"
+            r="4.5"
+            stroke="currentColor"
+            className="fill-white dark:fill-slate-900"
+            strokeWidth={2}
+          />
+        </svg>
+        <div className="relative">
+          <h3 className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-200 pt-8">
             {title}
           </h3>
-          <p className="text-base font-normal text-gray-500 dark:text-gray-400">
-            {description}
-          </p>
+          <div className="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2 text-sm">
+            <p>{description}</p>
+          </div>
+          <dl className="absolute left-0 top-0  lg:right-full lg:mr-[calc(6.5rem+1px)]">
+            <dt className="sr-only">Date</dt>
+            <dd className="whitespace-nowrap text-sm leading-6 dark:text-slate-400">
+              <time dateTime="2024-03-19T18:00:00.000Z">
+                {new Date(publishedAt as string).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </time>
+            </dd>
+          </dl>
         </div>
-      </Link>
+        <Link
+          className="flex items-center text-sm text-sky-500 font-medium"
+          href={`/blogs/${slug}`}
+        >
+          <span className="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl" />
+          <span className="relative">Read more</span>
+          <svg
+            className="relative mt-px overflow-visible ml-2.5 text-sky-300 dark:text-sky-700"
+            width={3}
+            height={6}
+            viewBox="0 0 3 6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M0 0L3 3L0 6" />
+          </svg>
+        </Link>
+      </article>
     </motion.li>
   );
 };

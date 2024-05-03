@@ -6,11 +6,11 @@ import { GithubIcon, TwitterIcon } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
 
-export interface SocialLinksProps {
+export interface StatisticsProps {
   githubActivities: Externals.Github.ApiResponse;
 }
 
-export default function SocialLinks({ githubActivities }: SocialLinksProps) {
+export default function StatisticsCards({ githubActivities }: StatisticsProps) {
   return (
     <motion.div
       className="flex gap-8 flex-col lg:flex-row"
@@ -53,7 +53,7 @@ const TwitterCard = () => {
   );
 };
 
-export const GithubCard = ({ githubActivities }: SocialLinksProps) => {
+export const GithubCard = ({ githubActivities }: StatisticsProps) => {
   const activities = useMemo(() => {
     const flatActivities =
       githubActivities.data.user.contributionsCollection.contributionCalendar.weeks.flatMap(

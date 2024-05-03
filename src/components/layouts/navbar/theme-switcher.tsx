@@ -6,14 +6,15 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-import { ComputerIcon, MoonIcon, SunIcon } from "lucide-react";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
+import { HiOutlineComputerDesktop } from "react-icons/hi2";
 
 const themeIcons = {
   light: <SunIcon size={16} />,
   dark: <MoonIcon size={16} />,
-  system: <ComputerIcon size={16} />,
+  system: <HiOutlineComputerDesktop size={16} />,
 };
 
 export function ThemeSwitcher() {
