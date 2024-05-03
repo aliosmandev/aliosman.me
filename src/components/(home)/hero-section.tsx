@@ -27,7 +27,7 @@ export default function HeroSection() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 2 * 0.1 }}
         >
-          Hey, I'm Ali Osman
+          Hey, I&apos;m Ali Osman
         </motion.h1>
         <motion.p
           initial={{ y: 20, opacity: 0 }}
