@@ -2,6 +2,24 @@
 import { Button, Image } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
+import Link from "next/link";
+import { PropsWithChildren } from "react";
+
+export const HeroButton = ({
+  children,
+  href,
+}: PropsWithChildren<{ href: string }>) => (
+  <Button
+    as={Link}
+    target="_blank"
+    href={href}
+    size="sm"
+    className="ml-1 !p-1 h-6 bg-gray-200 border-gray-300 border rounded !text-gray-700 !gap-x-1"
+    radius="sm"
+  >
+    {children}
+  </Button>
+);
 
 export default function HeroSection() {
   return (
@@ -36,11 +54,7 @@ export default function HeroSection() {
           className="text-gray-500 dark:text-gray-400"
         >
           I am a Full Stack Developer and entrepreneur. Currently, I work at
-          <Button
-            size="sm"
-            className="mx-1 !p-1 h-6 bg-gray-200 border-gray-300 border rounded !text-gray-700 !gap-x-1"
-            radius="sm"
-          >
+          <HeroButton href="https://birdefter.com/">
             <NextImage
               src="/images/works/birdefter.png"
               alt="Birdefter"
@@ -49,13 +63,9 @@ export default function HeroSection() {
               className="rounded-full"
             />
             Birdefter
-          </Button>
+          </HeroButton>
           and am also developing
-          <Button
-            size="sm"
-            className="mx-1 !p-1 h-6 bg-gray-200 border-gray-300 border rounded !text-gray-700 !gap-x-1"
-            radius="sm"
-          >
+          <HeroButton href="https://postiva.app/">
             <NextImage
               src="/images/works/postiva.png"
               alt="Postiva"
@@ -64,7 +74,7 @@ export default function HeroSection() {
               className="rounded-full"
             />
             Postiva
-          </Button>
+          </HeroButton>
           , an application that simplifies content management for indie makers
           and startups.
         </motion.p>
