@@ -38,7 +38,7 @@ export default function HeroSection() {
           radius="lg"
         />
       </motion.div>
-      <div className="flex flex-col gap-y-4 justify-center max-w-[610px] text-md">
+      <div className="flex flex-col gap-y-4 justify-center max-w-[600px] text-md">
         <motion.h1
           className="text-2xl font-bold dark:text-white"
           initial={{ y: 20, opacity: 0 }}
@@ -53,7 +53,7 @@ export default function HeroSection() {
           transition={{ duration: 0.5, delay: 3 * 0.1 }}
           className="text-gray-500 dark:text-gray-400"
         >
-          I am a Full Stack Developer and entrepreneur. Currently, I work at
+          I&apos;m a Full Stack Developer and entrepreneur. I currently work at
           <HeroButton href="https://birdefter.com/">
             <NextImage
               src="/images/works/birdefter.png"
@@ -64,7 +64,7 @@ export default function HeroSection() {
             />
             Birdefter
           </HeroButton>
-          and am also developing
+          and I&apos;m developing
           <HeroButton href="https://postiva.app/">
             <NextImage
               src="/images/works/postiva.png"
@@ -75,8 +75,8 @@ export default function HeroSection() {
             />
             Postiva
           </HeroButton>
-          , an application that simplifies content management for indie makers
-          and startups.
+          , an application designed to simplify content management for indie
+          makers and startups.
         </motion.p>
       </div>
     </div>

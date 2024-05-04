@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 import { ArrowUpRightIcon } from "lucide-react";
 import Link from "next/link";
-import { Blogs } from "../(blogs)/blog-section";
+import { Writings } from "../(blogs)/blog-section";
 
-export default function LatestPosts() {
+export default function LatestWritings() {
   return (
     <div className="flex gap-y-6 flex-col">
       <motion.div
@@ -14,7 +14,7 @@ export default function LatestPosts() {
         transition={{ duration: 0.5, delay: 3 * 0.1 }}
       >
         <div className="flex flex-col gap-y-1">
-          <Link href="/blogs">
+          <Link href="/writing">
             <h1 className="text-lg font-medium dark:text-white flex items-center gap-x-1">
               Latest Posts
               <ArrowUpRightIcon
@@ -28,7 +28,7 @@ export default function LatestPosts() {
             contributions.
           </p>
         </div>
-        <Blogs />
+        <Writings />
       </motion.div>
     </div>
   );

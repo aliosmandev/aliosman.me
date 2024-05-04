@@ -3,14 +3,19 @@ import { Content } from "@postiva/client";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const BlogCard = ({ slug, title, description, publishedAt }: Content) => {
+export const WritingCard = ({
+  title,
+  description,
+  publishedAt,
+  slug,
+}: Content) => {
   return (
-    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer  transition-colors group ms-[24px]">
+    <motion.li className="flex gap-y-1 w-full rounded-2xl cursor-pointer transition-colors group ms-[24px]">
       <article className="relative group">
-        <div className="absolute -inset-y-4 -inset-x-6 sm:rounded-2xl group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50" />
+        <div className="absolute -inset-y-2 -inset-x-3 sm:rounded-2xl group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50" />
         <svg
           viewBox="0 0 9 9"
-          className="hidden absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"
+          className="hidden absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-4 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"
         >
           <circle
             cx="4.5"
@@ -43,7 +48,7 @@ const BlogCard = ({ slug, title, description, publishedAt }: Content) => {
         </div>
         <Link
           className="flex items-center text-sm text-sky-500 font-medium"
-          href={`/blogs/${slug}`}
+          href={`/writing/${slug}`}
         >
           <span className="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl" />
           <span className="relative">Read more</span>
@@ -65,5 +70,3 @@ const BlogCard = ({ slug, title, description, publishedAt }: Content) => {
     </motion.li>
   );
 };
-
-export default BlogCard;

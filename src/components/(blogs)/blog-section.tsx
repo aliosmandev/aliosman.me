@@ -3,9 +3,9 @@ import { postivaClient } from "@/libs/postiva";
 import { Content } from "@postiva/client";
 import { motion } from "framer-motion";
 import { Fragment, useEffect, useState } from "react";
-import BlogCard from "./blog-card";
+import { WritingCard } from "./blog-card";
 
-export default function BlogsSection() {
+export const WritingSection = () => {
   return (
     <Fragment>
       <div className="flex flex-col gap-y-2 justify-center max-w-xl text-md">
@@ -15,7 +15,7 @@ export default function BlogsSection() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 2 * 0.1 }}
         >
-          Posts
+          Writing
         </motion.h1>
         <motion.p
           initial={{ y: 20, opacity: 0 }}
@@ -23,16 +23,16 @@ export default function BlogsSection() {
           transition={{ duration: 0.5, delay: 3 * 0.1 }}
           className="text-gray-500 dark:text-gray-400"
         >
-          Explore a selection of posts that showcase my thoughts and
-          experiences.
+          Explore a selection of posts that showcase my skills and
+          contributions.
         </motion.p>
       </div>
-      <Blogs />
+      <Writings />
     </Fragment>
   );
-}
+};
 
-export const Blogs = () => {
+export const Writings = () => {
   const [posts, setPosts] = useState<Content[]>([]);
 
   useEffect(() => {
@@ -50,11 +50,11 @@ export const Blogs = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 4 * 0.1 }}
     >
-      <div className="hidden absolute top-3 bottom-0 right-full mr-7 w-px bg-slate-200 dark:bg-slate-800 sm:block" />
+      <div className="hidden absolute top-3 bottom-0 right-full -mr-1 w-px bg-slate-200 dark:bg-slate-800 sm:block" />
 
-      <div className="flex flex-col gap-y-6">
+      <div className="flex flex-col gap-y-8">
         {posts?.map((post, index) => (
-          <BlogCard key={index} {...post} />
+          <WritingCard key={index} {...post} />
         ))}
       </div>
     </motion.ol>

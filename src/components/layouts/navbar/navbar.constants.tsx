@@ -25,8 +25,8 @@ export const navbarItems: INavbarItem[] = [
     icon: <Library size={18} />,
   },
   {
-    title: "Blogs",
-    path: "/blogs",
+    title: "Writing",
+    path: "/writing",
     icon: <BookOpenText size={18} />,
   },
   {
