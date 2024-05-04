@@ -30,7 +30,7 @@ export const WritingCard = ({
           <h3 className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-200 pt-8">
             {title}
           </h3>
-          <div className="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2 text-sm">
+          <div className="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
             <p>{description}</p>
           </div>
           <dl className="absolute left-0 top-0  lg:right-full lg:mr-[calc(6.5rem+1px)]">
