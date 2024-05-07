@@ -76,7 +76,7 @@ export default async function BlogDetail({
   const post = await postivaClient.contents.getContentBySlug(params.slug);
 
   return (
-    <div className="flex flex-col gap-y-4 items-center">
+    <div className="flex flex-col gap-y-4 items-center pb-6">
       <div className="max-w-[400px] md:max-w-[600px] ">
         <div className="flex justify-between items-center mb-6">
           <div className="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
@@ -95,7 +95,7 @@ export default async function BlogDetail({
               <div className="flex justify-between items-center gap-x-2">
                 <div>
                   <div className="hs-tooltip inline-block [--trigger:hover] [--placement:bottom]">
-                    <div className="hs-tooltip-toggle sm:mb-1 block text-start cursor-pointer">
+                    <div className="hs-tooltip-toggle sm:mb-1 block text-start">
                       <span className="font-medium text-gray-800 dark:text-gray-200">
                         {post?.publishedBy?.user?.name}
                       </span>
