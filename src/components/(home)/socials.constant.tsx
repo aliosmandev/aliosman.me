@@ -14,7 +14,7 @@ export const socials: Socials[] = [
   },
   {
     name: "Github",
-    url: "https://github.com/osmandlsmn",
+    url: "https://github.com/aliosmandev",
     icon: <FaGithub size={16} />,
   },
   {

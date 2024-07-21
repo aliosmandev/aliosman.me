@@ -69,7 +69,7 @@ export const GithubCard = ({ githubActivities }: StatisticsProps) => {
     <div className="flex flex-col gap-y-2 border w-full md:w-96 p-4 border-gray-200 rounded-2xl hover:bg-gray-100 transition-colors dark:bg-gray-800 dark:border-gray-700">
       <div className="flex justify-between h-full flex-col md:flex-row gap-y-4">
         <Link
-          href="https://github.com/osmandlsmn"
+          href="https://github.com/aliosmandev"
           target="_blank"
           className="flex flex-col cursor-pointer"
         >
@@ -79,7 +79,7 @@ export const GithubCard = ({ githubActivities }: StatisticsProps) => {
           <div className="flex flex-col my-2 mt-3 text-md gap-y-0.5">
             <h1 className="text-black leading-4 dark:text-white">Github</h1>
             <p className="text-gray-500 text-sm leading-* dark:text-gray-400">
-              @osmandlsmn
+              @aliosmandev
             </p>
           </div>
           <Button
